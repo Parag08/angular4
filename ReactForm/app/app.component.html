@@ -1,0 +1,29 @@
+<div *ngIf="!name; else forminfo">
+  <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+    <div class="form-container">
+      <div class="row columns">
+        <h1>My Reactive Form</h1>
+        <label>name
+          <input type="text" formControlName="name">
+        </label>
+        <label>description
+          <textarea formControlName="description"></textarea>
+        </label>
+        <label>testing
+          <input type="text" formControlName="test">
+        </label>
+        <input type="submit" class="button expanded" value="submit Form" [disabled]="!rForm.valid">
+      </div>
+    </div>
+  </form>
+</div>
+
+<ng-template #forminfo>
+  <div class="form-container">
+    <div class="rows columns">
+      <h1>{{name}}</h1>
+      <p>{{description}}</p>
+      <p>{{test}}</p>
+    </div>
+  </div>
+</ng-template>
